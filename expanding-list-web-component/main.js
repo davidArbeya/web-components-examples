@@ -5,23 +5,23 @@ class ExpandingList extends HTMLUListElement {
     super();
 
     window.onload = function() {
-      const uls = Array.from(document.querySelectorAll(':root ul'));
+      const uls = Array.from(document.querySelectorAll(':root ul')); //coge todos los ul y los mete en un array
       const lis = Array.from(document.querySelectorAll(':root li'));
 
-      uls.slice(1).forEach(ul => {
+      uls.slice(1).forEach(ul => { // recorre todos los ul del array excepto el primero
         ul.style.display = 'none';
       });
 
-      lis.forEach(li => {
-        const childText = li.childNodes[0];
-        const newSpan = document.createElement('span');
+      lis.forEach(li => { //recorre todos los li
+        const childText = li.childNodes[0]; //coge el texto
+        const newSpan = document.createElement('span'); //crea un span newSpan
 
-        newSpan.textContent = childText.textContent;
-        childText.parentNode.insertBefore(newSpan, childText);
-        childText.parentNode.removeChild(childText);
+        newSpan.textContent = childText.textContent; //mete el texto en el span newSpan
+        childText.parentNode.insertBefore(newSpan, childText); //inserta newSpan antes de childText
+        childText.parentNode.removeChild(childText); //elimina childText
       });
 
-      const spans = Array.from(document.querySelectorAll(':root span'));
+      const spans = Array.from(document.querySelectorAll(':root span')); //mete todos los spans en un array
 
       spans.forEach(span => {
         if (span.nextElementSibling) {
